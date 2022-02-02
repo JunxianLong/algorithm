@@ -39,7 +39,7 @@ func fib(n int) int {
 	return fib(n-1) + fib(n-2)
 }
 
-func fib2() func() int {
+func Fib2() func() int {
 	a, b := 0, 1
 	return func() int {
 		a, b = b, a+b
