@@ -1,4 +1,4 @@
-package main
+package array
 
 // merge 合并两个有序数组
 func merge(nums1 []int, nums2 []int) []int {
