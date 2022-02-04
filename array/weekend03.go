@@ -342,3 +342,21 @@ func MaximumDifference(nums []int) int {
 	}
 	return max
 }
+
+// URL:https://leetcode-cn.com/problems/N6YdxV/
+// Time:20220204
+// SearchInsert 查找插入位置
+func SearchInsert(nums []int, target int) int {
+	i, j := 0, len(nums)
+	for i < j {
+		mid := (i + j) >> 1
+		if nums[mid] > target {
+			j = mid
+		} else if nums[mid] < target {
+			i = mid + 1
+		} else {
+			return mid
+		}
+	}
+	return i
+}
