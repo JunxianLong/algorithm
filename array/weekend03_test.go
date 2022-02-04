@@ -28,3 +28,9 @@ func TestPairSumArray(t *testing.T) {
 	nums := []int{1, 4, 3, 2}
 	assert.Equal(t, 4, PairSumArray(nums))
 }
+
+func TestCountKDifference(t *testing.T) {
+	nums := []int{1, 2, 2, 1}
+	k := 1
+	assert.Equal(t, CountKDifference(nums, k), 4)
+}

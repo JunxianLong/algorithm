@@ -1,6 +1,9 @@
 package array
 
-import "sort"
+import (
+	"math"
+	"sort"
+)
 
 // URL:https://leetcode-cn.com/problems/relative-sort-array/
 // Time:20220112
@@ -305,6 +308,21 @@ func PairSumArray(nums []int) int {
 	var count int
 	for i := 0; i < len(nums)-1; i += 2 {
 		count += nums[i]
+	}
+	return count
+}
+
+// URL:https://leetcode-cn.com/problems/count-number-of-pairs-with-absolute-difference-k/
+// Time:20220204
+// CountKDifference 差的绝对值为 K 的数对数目
+func CountKDifference(nums []int, k int) int {
+	var count int
+	for i := 0; i < len(nums); i++ {
+		for j := i + 1; j < len(nums); j++ {
+			if math.Abs(float64(nums[i]-nums[j])) == float64(k) {
+				count++
+			}
+		}
 	}
 	return count
 }
