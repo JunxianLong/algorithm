@@ -23,3 +23,8 @@ func TestGame(t *testing.T) {
 	answer := []int{1, 2, 3}
 	assert.Equal(t, 3, Game(guess, answer))
 }
+
+func TestPairSumArray(t *testing.T) {
+	nums := []int{1, 4, 3, 2}
+	assert.Equal(t, 4, PairSumArray(nums))
+}

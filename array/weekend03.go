@@ -296,3 +296,19 @@ func Game(guess []int, answer []int) int {
 	}
 	return count
 }
+
+// URL:https://leetcode-cn.com/problems/array-partition-i/
+// Time:20220204
+// PairSumArray 数组拆分I
+func PairSumArray(nums []int) int {
+	sort.Ints(nums)
+	var count int
+	for i := 0; i < len(nums)-1; i += 2 {
+		if nums[i] > nums[i+1] {
+			count += nums[i+1]
+		} else {
+			count += nums[i]
+		}
+	}
+	return count
+}
