@@ -304,11 +304,7 @@ func PairSumArray(nums []int) int {
 	sort.Ints(nums)
 	var count int
 	for i := 0; i < len(nums)-1; i += 2 {
-		if nums[i] > nums[i+1] {
-			count += nums[i+1]
-		} else {
-			count += nums[i]
-		}
+		count += nums[i]
 	}
 	return count
 }
