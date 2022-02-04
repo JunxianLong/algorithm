@@ -326,3 +326,19 @@ func CountKDifference(nums []int, k int) int {
 	}
 	return count
 }
+
+// URL:https://leetcode-cn.com/problems/maximum-difference-between-increasing-elements/
+// Time:20220204
+// MaximumDifference 增量元素之间的最大差值
+func MaximumDifference(nums []int) int {
+	max := -1
+	for i := len(nums) - 1; i > 0; i-- {
+		for j := i - 1; j >= 0; j-- {
+			sum := nums[i] - nums[j]
+			if sum > 0 && sum > max {
+				max = sum
+			}
+		}
+	}
+	return max
+}
