@@ -34,3 +34,8 @@ func TestCountKDifference(t *testing.T) {
 	k := 1
 	assert.Equal(t, CountKDifference(nums, k), 4)
 }
+
+func TestMaximumDifference(t *testing.T) {
+	nums := []int{7, 1, 5, 4}
+	assert.Equal(t, MaximumDifference(nums), 4)
+}
