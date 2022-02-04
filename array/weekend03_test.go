@@ -8,3 +8,9 @@ func TestRelativeSortArray(t *testing.T) {
 	result := RelativeSortArray(arr1, arr2)
 	t.Log(result)
 }
+
+func TestSmallerNumbersThanCurrent(t *testing.T) {
+	nums := []int{8, 1, 2, 2, 3}
+	result := SmallerNumbersThanCurrent(nums)
+	t.Log(result)
+}
