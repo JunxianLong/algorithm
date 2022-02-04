@@ -31,33 +31,6 @@ func relativeSortArray(arr1 []int, arr2 []int) []int {
 	return ans
 }
 
-// smallerNumbersThanCurrent 有多少小于当前数字的数字
-func smallerNumbersThanCurrent(nums []int) []int {
-
-	/*
-		使用计数排序算法
-	*/
-
-	numbers := [101]int{}
-
-	for _, v := range nums {
-		numbers[v]++
-	}
-
-	for i := 0; i < 100; i++ {
-		numbers[i+1] += numbers[i]
-	}
-
-	resp := make([]int, len(nums))
-
-	for i, v := range nums {
-		if v > 0 {
-			resp[i] = numbers[v-1]
-		}
-	}
-	return resp
-}
-
 // runningSum 一维数组的动态和
 func runningSum(nums []int) []int {
 	for i := 0; i < len(nums)-1; i++ {
@@ -285,4 +258,27 @@ func RelativeSortArray(arr1 []int, arr2 []int) []int {
 		return n1 < n2
 	})
 	return arr1
+}
+
+// URL:https://leetcode-cn.com/problems/how-many-numbers-are-smaller-than-the-current-number/
+// Time:20220204
+// SmallerNumbersThanCurrent 有多少小于当前数字的数字
+func SmallerNumbersThanCurrent(nums []int) []int {
+	arr := [101]int{}
+	for _, num := range nums {
+		arr[num]++
+	}
+
+	for i := 0; i < 100; i++ {
+		arr[i+1] += arr[i]
+	}
+
+	result := make([]int, len(nums))
+
+	for i, num := range nums {
+		if num > 0 {
+			result[i] = arr[num-1]
+		}
+	}
+	return result
 }
