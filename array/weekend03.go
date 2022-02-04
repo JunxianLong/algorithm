@@ -282,3 +282,17 @@ func SmallerNumbersThanCurrent(nums []int) []int {
 	}
 	return result
 }
+
+// URL:https://leetcode-cn.com/problems/guess-numbers/
+// Time:20220204
+// Game 猜数字
+func Game(guess []int, answer []int) int {
+	var count int
+	for i, v := range guess {
+		if answer[i] != v {
+			continue
+		}
+		count++
+	}
+	return count
+}
