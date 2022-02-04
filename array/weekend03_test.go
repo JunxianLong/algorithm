@@ -39,3 +39,9 @@ func TestMaximumDifference(t *testing.T) {
 	nums := []int{7, 1, 5, 4}
 	assert.Equal(t, MaximumDifference(nums), 4)
 }
+
+func TestSearchInsert(t *testing.T) {
+	nums := []int{1, 3, 5, 6}
+	target := 7
+	assert.Equal(t, SearchInsert(nums, target), 4)
+}
