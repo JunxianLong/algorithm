@@ -360,3 +360,21 @@ func SearchInsert(nums []int, target int) int {
 	}
 	return i
 }
+
+// URL:https://leetcode-cn.com/problems/N6YdxV/
+// Time:20220205
+// SearchInsert2 查找插入位置
+func SearchInsert2(nums []int, target int) int {
+	left, right := 0, len(nums)-1
+	for left <= right {
+		mid := (left + right) >> 1
+		if nums[mid] > target {
+			right = mid - 1
+		} else if nums[mid] < target {
+			left = mid + 1
+		} else {
+			return mid
+		}
+	}
+	return left
+}
