@@ -42,6 +42,8 @@ func KthDistinct(arr []string, k int) string {
 	return ""
 }
 
+// URL:https://leetcode-cn.com/problems/finding-3-digit-even-numbers/
+// Time:20220205
 // FindEvenNumbers 找出3位偶数
 func FindEvenNumbers(digits []int) []int {
 	nums := [10]int{}
@@ -67,4 +69,35 @@ func FindEvenNumbers(digits []int) []int {
 		}
 	}
 	return result
+}
+
+// URL:https://leetcode-cn.com/problems/count-common-words-with-one-occurrence/
+// Time:20220205
+// CountWords 统计出现过一次的公共字符串（龟速。。。）
+func CountWords(words1 []string, words2 []string) int {
+	word1Freq := make(map[string]int)
+	var count int
+
+	for _, word := range words1 {
+		word1Freq[word]++
+	}
+
+	for _, word := range words2 {
+		freq, ok := word1Freq[word]
+		if !ok {
+			continue
+		}
+		if freq > 1 {
+			delete(word1Freq, word)
+		} else {
+			word1Freq[word]--
+		}
+	}
+
+	for _, freq := range word1Freq {
+		if freq == 0 {
+			count++
+		}
+	}
+	return count
 }
