@@ -16,3 +16,9 @@ func TestFindEvenNumbers(t *testing.T) {
 	result := []int{102, 120, 130, 132, 210, 230, 302, 310, 312, 320}
 	assert.Equal(t, FindEvenNumbers(digits), result)
 }
+
+func TestCountWords(t *testing.T) {
+	words1 := []string{"a", "ab"}
+	words2 := []string{"a", "a", "a", "ab"}
+	assert.Equal(t, CountWords(words1, words2), 1)
+}
