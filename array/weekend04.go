@@ -41,3 +41,30 @@ func KthDistinct(arr []string, k int) string {
 	}
 	return ""
 }
+
+// FindEvenNumbers 找出3位偶数
+func FindEvenNumbers(digits []int) []int {
+	nums := [10]int{}
+	for _, digit := range digits {
+		nums[digit]++
+	}
+	result := make([]int, 0)
+	for i := 100; i <= 998; i += 2 {
+		tmp := i
+		tmpNums := [10]int{}
+		flag := true
+		for tmp > 0 {
+			c := tmp % 10
+			tmpNums[c]++
+			if tmpNums[c] > nums[c] {
+				flag = false
+				break
+			}
+			tmp /= 10
+		}
+		if flag {
+			result = append(result, i)
+		}
+	}
+	return result
+}
