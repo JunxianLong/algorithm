@@ -15,3 +15,18 @@ func RemoveDuplicates(nums []int) int {
 	}
 	return i
 }
+
+// ContainsNearbyDuplicate 存在重复元素2
+func ContainsNearbyDuplicate(nums []int, k int) bool {
+	numsInfo := make(map[int]int)
+	for i, num := range nums {
+		if _, ok := numsInfo[num]; ok {
+			return true
+		}
+		numsInfo[num] = i
+		if len(numsInfo) > k {
+			delete(numsInfo, nums[i-k])
+		}
+	}
+	return false
+}

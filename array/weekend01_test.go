@@ -15,3 +15,11 @@ func TestRemoveDuplicates(t *testing.T) {
 		t.Log("测试不通过")
 	}
 }
+
+func TestContainsNearbyDuplicate(t *testing.T) {
+	nums := []int{1, 2, 3, 1}
+	exist := ContainsNearbyDuplicate(nums, 3)
+	if !exist {
+		t.Log("存在重复元素2不通过")
+	}
+}
