@@ -23,3 +23,8 @@ func TestContainsNearbyDuplicate(t *testing.T) {
 		t.Log("存在重复元素2不通过")
 	}
 }
+
+func TestRemoveElement(t *testing.T) {
+	nums := []int{0, 1, 2, 2, 3, 0, 4, 2}
+	t.Log(RemoveElement(nums, 2))
+}

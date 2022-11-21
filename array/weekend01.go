@@ -30,3 +30,19 @@ func ContainsNearbyDuplicate(nums []int, k int) bool {
 	}
 	return false
 }
+
+// RemoveElement 移除元素
+func RemoveElement(nums []int, val int) int {
+	if len(nums) == 0 {
+		return 0
+	}
+	var i int
+	for _, v := range nums {
+		if v == val {
+			continue
+		}
+		nums[i] = v
+		i++
+	}
+	return i
+}
