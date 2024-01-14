@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"math"
+	"sort"
 	"strings"
 )
 
@@ -297,4 +298,264 @@ func summaryRanges(nums []int) []string {
 		strs = append(strs, str)
 	}
 	return strs
+}
+
+func plusOne2(digits []int) []int {
+
+	for i := len(digits) - 1; i >= 0; i-- {
+		digits[i]++
+		if digits[i]%10 == 0 {
+			return digits
+		}
+		digits[i] = 0
+	}
+	digits = append([]int{1}, digits...)
+	return digits
+}
+
+func thirdMax(nums []int) int {
+	first, second, third := math.MinInt, math.MinInt, math.MinInt
+	for _, num := range nums {
+		if num > first {
+			first, second, third = num, first, second
+		} else if num > second && num < first {
+			third = second
+			second = num
+		} else if num > third && num < second {
+			third = num
+		}
+	}
+
+	if third == math.MinInt {
+		return first
+	}
+	return third
+}
+
+// plusOne 加一
+func plusOne(digits []int) []int {
+
+	count := 1
+	for i := len(digits) - 1; i >= 0; i-- {
+		digits[i] += count
+		if digits[i] >= 10 {
+			digits[i] = 0
+			continue
+		}
+		count = 0
+	}
+	if count == 1 {
+		digits = append([]int{count}, digits...)
+	}
+	return digits
+}
+
+func intersect(nums1 []int, nums2 []int) []int {
+	sort.Ints(nums1)
+	sort.Ints(nums2)
+	var result []int
+	for i, j := 0, 0; i < len(nums1) && j < len(nums2); {
+		x, y := nums1[i], nums2[j]
+		if x == y {
+			result = append(result, x)
+			i++
+			j++
+		} else if x < y {
+			i++
+		} else {
+			j++
+		}
+	}
+	return result
+}
+
+// distributeCandies 分糖果
+func distributeCandies(candyType []int) int {
+	sort.Ints(candyType)
+	var count int
+	n := len(candyType) / 2
+	for i := 0; i < len(candyType); i++ {
+		if (i == 0 || candyType[i] != candyType[i-1]) && count < n {
+			count++
+		}
+	}
+	return count
+}
+
+// canPlaceFlowers 种花问题
+func canPlaceFlowers(flowerbed []int, n int) bool {
+	var count int
+	for i, flower := range flowerbed {
+		if flower == 0 && (i == 0 || flowerbed[i-1] == 0) && (i == len(flowerbed)-1 || flowerbed[i+1] == 0) {
+			flowerbed[i] = 1
+			count++
+		}
+	}
+	return count >= n
+}
+
+func findLengthOfLCIS(nums []int) int {
+	var (
+		max   int
+		start int
+	)
+	for i := range nums {
+		if i > 0 && nums[i-1] >= nums[i] {
+			start = i
+		}
+		if max < i-start+1 {
+			max = i - start + 1
+		}
+	}
+	return max
+}
+
+func sortedSquares(nums []int) []int {
+	negative := -1
+	for i := range nums {
+		if nums[i] < 0 {
+			negative++
+		}
+	}
+
+	positive := negative + 1
+	var result []int
+	for i, j := negative, positive; i >= 0 || j < len(nums); {
+		if i < 0 {
+			// 全是正数
+			result = append(result, nums[j]*nums[j])
+			j++
+		} else if j == len(nums) {
+			// 全是负数
+			result = append(result, nums[i]*nums[i])
+			i--
+		} else if nums[j]*nums[j] > nums[i]*nums[i] {
+			result = append(result, nums[i]*nums[i])
+			i--
+		} else {
+			result = append(result, nums[j]*nums[j])
+			j++
+		}
+	}
+	return result
+}
+
+func addToArrayForm(num []int, k int) []int {
+
+	var result []int
+	for i := len(num) - 1; i >= 0; i-- {
+		count := k % 10
+		sum := num[i] + count
+		k /= 10
+		if sum > 10 {
+			k++
+			sum -= 10
+		}
+		result = append(result, sum)
+	}
+	for ; k > 0; k /= 10 {
+		result = append(result, k%10)
+	}
+
+	for i := 0; i < len(result)/2; i++ {
+		result[i], result[len(result)-i-1] = result[len(result)-i-1], result[i]
+	}
+	return result
+}
+
+func commonChars(words []string) []string {
+	chars := [26]int{}
+	for i := range chars {
+		chars[i] = math.MaxInt
+	}
+
+	for _, word := range words {
+		tmp := [26]int{}
+		for _, w := range word {
+			tmp[w-'a']++
+		}
+		for i, t := range tmp {
+			if t < chars[i] {
+				chars[i] = t
+			}
+		}
+	}
+
+	var result []string
+	for char, num := range chars {
+		for i := 0; i < num; i++ {
+			result = append(result, string(char+'a'))
+		}
+	}
+	return result
+}
+
+func relativeSortArray(arr1 []int, arr2 []int) []int {
+	arrs := [1001]int{}
+	for _, arr := range arr1 {
+		arrs[arr]++
+	}
+
+	fmt.Println(arrs)
+
+	var result []int
+
+	for _, arr := range arr2 {
+		for arrs[arr] > 0 {
+			fmt.Println(arrs[arr])
+			result = append(result, arr)
+			arrs[arr]--
+		}
+		//for i := 0; i < arrs[arr]; i++ {
+		//}
+		//arrs[arr] = 0
+	}
+
+	for i := range arrs {
+		for j := 0; j < arrs[i]; j++ {
+			result = append(result, i)
+		}
+		arrs[i] = 0
+	}
+	return result
+}
+
+func replaceElements(arr []int) []int {
+	for i := range arr {
+
+		max := -1
+		for j := i + 1; j < len(arr); j++ {
+			if arr[j] > max {
+				max = arr[j]
+			}
+		}
+		arr[i] = max
+	}
+	return arr
+}
+
+func sumZero(n int) []int {
+	var result []int
+	var count int
+	for i := 1; i < n; i++ {
+		result = append(result, i-1)
+		count += i - 1
+	}
+	return append(result, -count)
+}
+
+func checkIfExist(arr []int) bool {
+	sort.Ints(arr)
+	i, j := 0, len(arr)-1
+	for i < j {
+		cal := arr[i] * 2
+		if cal == arr[j] {
+			return false
+		} else if cal < arr[j] {
+			j--
+		} else {
+			i++
+		}
+	}
+	return false
 }

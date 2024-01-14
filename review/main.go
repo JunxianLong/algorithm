@@ -1,6 +1,8 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+)
 
 func main() {
 	//bm := NewBitMap(8)
@@ -16,10 +18,51 @@ func main() {
 	//num := majorityElement(nums)
 	//fmt.Println(num)
 
-	strs := "()"
-	fmt.Println(isValid(strs))
+	//nums := []int{3, 38, 5, 44, 47, 15, 36, 26, 27, 2, 46, 4, 19, 50, 48}
+	//nums := []int{9, 9, 9}
+	//BubbleSort(nums)
+	//SelectSort(nums)
+	//QuickSort(nums, 0, len(nums)-1)
+
+	//result := plusOne(nums)
+
+	//nums1 := []int{6, 6, 6, 6}
+	//nums2 := []int{2, 2}
+	//result := intersect(nums1, nums2)
+	//fmt.Println(result)
+	//fmt.Println((8 + 5) % 8)
+
+	//n := distributeCandies(nums1)
+	//fmt.Println(n)
+
+	//nums1 = []int{2, 1, 3}
+	//result := findLengthOfLCIS(nums1)
+	//fmt.Println(result)
+	//students := []Student{Student{"A"}, Student{"B"}, Student{"C"}}
+	//var students2 []*Student
+	//for _, s := range students {
+	//	students2 = append(students2, &s)
+	//}
+	//
+	//for _, s := range students2 {
+	//	fmt.Println(s)
+	//}
+	//nums := []int{1, 2, 6, 3, 0, 7, 1, 7, 1, 9, 7, 5, 6, 6, 4, 4, 0, 0, 6, 3}
+	//k := 516
+	//result := addToArrayForm(nums, k)
+	//fmt.Println(result)
+	//words := []string{"bella", "label", "roller"}
+	//fmt.Println(commonChars(words))
+
+	nums1 := []int{2, 2}
+	nums2 := []int{2, 2}
+	fmt.Println(relativeSortArray(nums1, nums2))
+
 }
 
+type Student struct {
+	Name string
+}
 type BitMap struct {
 	bits []byte
 	vmax uint
